@@ -104,18 +104,18 @@ class GenbaController2 extends AppController {
 			
 			$db = $this->Tprocess->getDataSource();
 			$subQuery = $db->buildStatement(
-					array(
-							'fields'     => array('`Tprocess`.`site_id`'),
-							'table'      => $db->fullTableName($this->Tprocess),
-							'alias'      => 'Tprocess',
-							'limit'      => null,
-							'offset'     => null,
-							'joins'      => array(),
-							'conditions' => $conditionsSubQuery,
-							'order'      => null,
-							'group'      => null
-					),
-					$this->Tprocess
+				array(
+					'fields'     => array('`Tprocess`.`site_id`'),
+					'table'      => $db->fullTableName($this->Tprocess),
+					'alias'      => 'Tprocess',
+					'limit'      => null,
+					'offset'     => null,
+					'joins'      => array(),
+					'conditions' => $conditionsSubQuery,
+					'order'      => null,
+					'group'      => null
+				),
+				$this->Tprocess
 			);
 			$subQuery = ' `Site`.`id` IN (' . $subQuery . ') ';
 			$subQueryExpression = $db->expression($subQuery);
@@ -127,9 +127,9 @@ class GenbaController2 extends AppController {
 		$conditions['Site.delete_flag']= 0;
 		$conditions['Site.complete_flag']= 0;
 		$this->paginate = array(
-				'fields'=>$fields,
-				'limit' =>$this->perpage,
-				'order' => array('Site.id'=>'DESC') //表示順
+			'fields'=>$fields,
+			'limit' =>$this->perpage,
+			'order' => array('Site.id'=>'DESC') //表示順
 		);
 		$Site = $this->paginate('Site',$conditions);
 		
